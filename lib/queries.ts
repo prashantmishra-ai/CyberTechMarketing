@@ -45,6 +45,11 @@ export type FocusAreaDocument = {
   title: string;
   slug?: { current?: string };
   displayOrder?: number;
+  description?: string;
+  image?: unknown;
+  fullDescription?: unknown[];
+  challenges?: string[];
+  solutions?: { title?: string; description?: string }[];
 };
 
 export type TeamMemberDocument = {
@@ -60,6 +65,13 @@ export type JobPostingDocument = {
   slug?: { current?: string };
   isOpen?: boolean;
   postedDate?: string;
+  department?: string;
+  location?: string;
+  employmentType?: string;
+  challenge?: string;
+  requirements?: string[];
+  benefits?: string[];
+  applicationUrl?: string;
 };
 
 export type PageContentDocument = {
@@ -69,8 +81,15 @@ export type PageContentDocument = {
 
 export type PricingPlanDocument = {
   _id: string;
-  title: string;
+  name: string;
+  description?: string;
+  price: string;
+  period?: string;
+  features?: string[];
+  isPopular?: boolean;
   displayOrder?: number;
+  ctaText?: string;
+  ctaUrl?: string;
 };
 
 export type BlogPostDocument = {
@@ -79,6 +98,10 @@ export type BlogPostDocument = {
   slug?: { current?: string };
   publishedAt?: string;
   category?: string;
+  excerpt?: string;
+  image?: unknown;
+  accent?: string;
+  readTime?: string;
 };
 
 // Fetch all services
