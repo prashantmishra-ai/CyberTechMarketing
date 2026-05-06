@@ -1,4 +1,4 @@
-import { getCaseStudyBySlug, getAllCaseStudies } from '@/lib/queries';
+import { getCaseStudyBySlug, getAllCaseStudies, CaseStudyDocument } from '@/lib/queries';
 import { urlFor } from '@/lib/sanity';
 import Image from 'next/image';
 import { PortableText } from '@portabletext/react';
@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export async function generateStaticParams() {
   const caseStudies = await getAllCaseStudies();
-  return caseStudies.map((study) => ({
+  return caseStudies.map((study: CaseStudyDocument) => ({
     slug: study.slug.current,
   }));
 }
