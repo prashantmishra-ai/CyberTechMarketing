@@ -11,8 +11,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function FocusAreaPage({ params }: { params: { slug: string } }) {
-  const focusArea = await getFocusAreaBySlug(params.slug);
+export default async function FocusAreaPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const focusArea = await getFocusAreaBySlug(slug);
 
   if (!focusArea) {
     return <div>Focus area not found</div>;
@@ -96,7 +97,7 @@ export default async function FocusAreaPage({ params }: { params: { slug: string
               {focusArea.caseStudies.map((caseStudy) => (
                 <Link
                   key={caseStudy._id}
-                  href={`/focus-areas/${params.slug}/case-studies/${caseStudy.slug.current}`}
+                  href={`/focus-areas/${slug}/case-studies/${caseStudy.slug.current}`}
                 >
                   <div className="border-l-4 border-red-600 pl-6 py-4 hover:bg-gray-50 cursor-pointer rounded transition-colors">
                     <h3 className="text-xl font-bold mb-2">{caseStudy.title}</h3>

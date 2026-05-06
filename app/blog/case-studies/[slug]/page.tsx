@@ -11,8 +11,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function CaseStudyPage({ params }: { params: { slug: string } }) {
-  const caseStudy = await getCaseStudyBySlug(params.slug);
+export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const caseStudy = await getCaseStudyBySlug(slug);
 
   if (!caseStudy) {
     return <div>Case study not found</div>;

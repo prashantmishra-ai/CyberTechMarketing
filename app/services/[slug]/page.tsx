@@ -11,8 +11,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function ServiceDetailPage({ params }: { params: { slug: string } }) {
-  const service = await getServiceBySlug(params.slug);
+export default async function ServiceDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const service = await getServiceBySlug(slug);
 
   if (!service) {
     return <div>Service not found</div>;
