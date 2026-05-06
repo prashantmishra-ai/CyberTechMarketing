@@ -1,71 +1,72 @@
 import Link from 'next/link';
 import { getAllServices, type ServiceDocument } from '@/lib/queries';
-import { urlFor } from '@/lib/sanity';
 import { defaultHomePageContent } from '@/lib/homePage';
 
 const fallbackServices = [
     {
       title: "Digital Marketing",
-      desc: "Our services leverage online channels to promote businesses, products, or services. These encompass SEO, social media, email marketing, PPC advertising, and content marketing to reach and engage target audiences effectively.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1600&auto=format&fit=crop",
-      tag: "Growth Strategy",
-      metric: "SEO + Paid Media + Funnels",
-      href: "/services/digital-marketing"
+      desc: "Comprehensive digital marketing strategies that drive measurable growth across all channels",
+      tag: "FULL SERVICE",
+      metric: "300% AVG GROWTH",
+      href: "/services/digital-marketing",
+      icon: "📊",
+      gradient: "from-red-600 to-orange-600"
     },
     {
       title: "Graphic Design",
-      desc: "We craft visual elements like logos, images, and layouts to communicate messages effectively. We enhance branding, marketing materials, and websites to engage and leave lasting impressions on audiences.",
-      color: "from-rose-600 to-red-900",
-      image: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=1600&auto=format&fit=crop",
-      tag: "Creative Systems",
-      metric: "Branding + Campaign Visuals",
-      href: "/services/graphic-design"
+      desc: "Creative design solutions that capture attention and communicate your brand message effectively",
+      tag: "CREATIVE",
+      metric: "500+ DESIGNS",
+      href: "/services/graphic-design",
+      icon: "🎨",
+      gradient: "from-purple-600 to-pink-600"
     },
     {
       title: "E-commerce Marketing",
-      desc: "We specialize in promoting online stores, enhancing visibility, driving traffic, and optimizing conversions. Strategies include SEO, SEM, email marketing, social media ads, and product listing optimization for e-commerce success.",
-      color: "from-red-500 to-rose-950",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1600&auto=format&fit=crop",
-      tag: "Revenue Engine",
-      metric: "Store Growth + Retention",
-      href: "/services/ecommerce-marketing"
+      desc: "Specialized marketing strategies to increase online sales and grow your e-commerce business",
+      tag: "E-COMMERCE",
+      metric: "2.5X ROI",
+      href: "/services/ecommerce-marketing",
+      icon: "🛒",
+      gradient: "from-blue-600 to-cyan-600"
     },
     {
       title: "Pay Per Click",
-      desc: "PPC marketing services manage online advertising campaigns, paying only when users click on ads. We target keywords, demographics, and platforms to maximize ROI and drive targeted traffic to websites.",
-      color: "from-orange-600 to-red-950",
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop",
-      tag: "Performance Ads",
-      metric: "Clicks + ROAS Optimization",
-      href: "/services/pay-per-click"
+      desc: "Data-driven PPC campaigns that maximize ROI and drive qualified traffic to your website",
+      tag: "PAID ADS",
+      metric: "45% LOWER CPA",
+      href: "/services/pay-per-click",
+      icon: "💰",
+      gradient: "from-green-600 to-emerald-600"
     },
     {
       title: "Web Design",
-      desc: "We create visually appealing, user-friendly websites. We focus on layout, graphics, navigation, and responsiveness to provide an engaging online experience, optimizing branding and customer engagement.",
-      color: "from-pink-600 to-red-950",
-      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop",
-      tag: "UX + Conversion",
-      metric: "Modern Sites That Convert",
-      href: "/services/web-design"
+      desc: "Modern, responsive websites that deliver exceptional user experiences and drive conversions",
+      tag: "WEB DEVELOPMENT",
+      metric: "95+ PAGESPEED",
+      href: "/services/web-design",
+      icon: "💻",
+      gradient: "from-indigo-600 to-blue-600"
     },
     {
       title: "Content Writing",
-      desc: "Content writing services create high-quality, relevant, and engaging written content for websites, blogs, and marketing materials. We aim to inform, entertain, and persuade, boosting online visibility and audience engagement.",
-      color: "from-red-700 to-red-950",
-      image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1600&auto=format&fit=crop",
-      tag: "Content Engine",
-      metric: "Authority + Organic Reach",
-      href: "/services/content-writing"
+      desc: "Engaging, SEO-optimized content that resonates with your audience and drives action",
+      tag: "CONTENT",
+      metric: "10K+ WORDS/MO",
+      href: "/services/content-writing",
+      icon: "✍️",
+      gradient: "from-amber-600 to-orange-600"
     }
   ];
 
 type ServiceCard = {
   title: string;
   desc: string;
-  image: string;
   tag: string;
   metric: string;
   href: string;
+  icon: string;
+  gradient: string;
 };
 
 type ServicesProps = {
@@ -74,7 +75,25 @@ type ServicesProps = {
   services?: ServiceCard[];
 };
 
-function mapServiceToCard(service: ServiceDocument): ServiceCard | null {
+const iconMap: Record<string, string> = {
+  'digital-marketing': '📊',
+  'graphic-design': '🎨',
+  'ecommerce-marketing': '🛒',
+  'pay-per-click': '💰',
+  'web-design': '💻',
+  'content-writing': '✍️',
+};
+
+const gradientMap: Record<number, string> = {
+  0: 'from-red-600 to-orange-600',
+  1: 'from-purple-600 to-pink-600',
+  2: 'from-blue-600 to-cyan-600',
+  3: 'from-green-600 to-emerald-600',
+  4: 'from-indigo-600 to-blue-600',
+  5: 'from-amber-600 to-orange-600',
+};
+
+function mapServiceToCard(service: ServiceDocument, index: number): ServiceCard | null {
   const slug = service.slug?.current;
 
   if (!slug || !service.title || !service.description) {
@@ -84,12 +103,11 @@ function mapServiceToCard(service: ServiceDocument): ServiceCard | null {
   return {
     title: service.title,
     desc: service.description,
-    image: service.image
-      ? urlFor(service.image).width(1600).quality(80).url()
-      : fallbackServices[0].image,
-    tag: service.cardTag || service.title,
-    metric: service.cardMetric || service.category || 'Growth System',
-    href: `/services/cms/${slug}`,
+    tag: service.cardTag || service.category || 'SERVICE',
+    metric: service.cardMetric || 'EXPERT SOLUTIONS',
+    href: `/services/${slug}`,
+    icon: iconMap[slug] || '⚡',
+    gradient: gradientMap[index % 6] || 'from-red-600 to-orange-600',
   };
 }
 
@@ -100,59 +118,90 @@ export default async function Services({
 }: ServicesProps) {
   const resolvedServices = services
     ? services
-    : ((await getAllServices()).map(mapServiceToCard).filter(Boolean) as ServiceCard[]);
+    : ((await getAllServices()).map((s, i) => mapServiceToCard(s, i)).filter(Boolean) as ServiceCard[]);
 
   const cards = resolvedServices.length > 0 ? resolvedServices : fallbackServices;
 
   return (
-    <section id="services" className="py-32 bg-gray-50 relative border-y border-gray-200">
+    <section id="services" className="py-32 bg-gradient-to-b from-white to-gray-50 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center md:text-left mb-16 max-w-3xl">
+        <div className="text-center mb-16">
+          <div className="inline-block px-4 py-2 bg-red-100 rounded-full mb-6">
+            <span className="text-red-700 font-bold text-sm uppercase tracking-wider">Our Services</span>
+          </div>
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-6">
             {title}
           </h2>
-          <p className="text-xl text-gray-600 font-medium">
+          <p className="text-xl text-gray-600 font-medium max-w-3xl mx-auto">
             {description}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {cards.map((service, idx) => (
             <Link
               key={idx}
               href={service.href}
-              className="service-card h-[400px] border border-gray-200 group cursor-pointer shadow-sm hover:shadow-xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-200"
+              className="group relative overflow-hidden rounded-3xl bg-white border-2 border-gray-200 hover:border-transparent shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
             >
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 group-focus-visible:scale-105"
-                style={{ backgroundImage: `url(${service.image})` }}
-              ></div>
-              <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 group-focus-visible:scale-105" style={{ backgroundImage: `url(${service.image})` }}></div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-white/10"></div>
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.22),transparent_30%)]"></div>
-
-              <div className="absolute top-8 left-8 right-8 z-10">
-                <div className="inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.25em] text-white/90 backdrop-blur-sm">
-                  {service.tag}
+              {/* Gradient Background */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+              
+              {/* Content */}
+              <div className="relative z-10 p-8">
+                {/* Icon */}
+                <div className="mb-6">
+                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center text-3xl shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                    {service.icon}
+                  </div>
                 </div>
-                <h3 className="mt-5 text-2xl font-black text-white mb-2 leading-tight tracking-tight">{service.title}</h3>
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white/70">
+
+                {/* Tag */}
+                <div className="mb-4">
+                  <span className="inline-block px-3 py-1 bg-gray-100 group-hover:bg-white/20 text-gray-700 group-hover:text-white text-xs font-bold rounded-full uppercase tracking-wider transition-colors duration-300">
+                    {service.tag}
+                  </span>
+                </div>
+
+                {/* Title */}
+                <h3 className="text-2xl font-bold text-gray-900 group-hover:text-white mb-3 transition-colors duration-300">
+                  {service.title}
+                </h3>
+
+                {/* Metric */}
+                <p className="text-sm font-bold text-gray-500 group-hover:text-white/80 mb-4 uppercase tracking-wider transition-colors duration-300">
                   {service.metric}
                 </p>
-              </div>
 
-              <div className="service-card-content z-10">
-                <div className="w-12 h-1 bg-white mb-4 rounded-full opacity-50"></div>
-                <p className="service-card-desc text-white text-sm leading-relaxed font-medium">
+                {/* Description */}
+                <p className="text-gray-600 group-hover:text-white/90 mb-6 leading-relaxed transition-colors duration-300">
                   {service.desc}
                 </p>
-                <span className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-white backdrop-blur-sm transition-all duration-300 group-hover:bg-white group-hover:text-red-700 group-focus-visible:bg-white group-focus-visible:text-red-700">
-                  Explore Service
-                  <span aria-hidden="true">→</span>
-                </span>
+
+                {/* CTA */}
+                <div className="flex items-center gap-2 text-red-600 group-hover:text-white font-bold transition-colors duration-300">
+                  <span>Explore Service</span>
+                  <svg className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                  </svg>
+                </div>
               </div>
+
+              {/* Decorative Element */}
+              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-3xl group-hover:bg-white/20 transition-colors duration-300"></div>
             </Link>
           ))}
+        </div>
+
+        {/* CTA Section */}
+        <div className="mt-16 text-center">
+          <p className="text-gray-600 text-lg mb-6">Need a custom solution? We're here to help.</p>
+          <Link 
+            href="/contact" 
+            className="inline-block px-8 py-4 bg-gradient-to-r from-red-600 to-red-500 text-white font-bold rounded-xl hover:shadow-xl hover:shadow-red-600/30 transition-all duration-300 hover:-translate-y-0.5"
+          >
+            Get Started Today
+          </Link>
         </div>
       </div>
     </section>

@@ -5,67 +5,23 @@ import Link from 'next/link';
 export default async function PricingPage() {
   const plans = await getAllPricingPlans();
 
-  // Fallback pricing plans if Sanity has no data
-  const fallbackPlans = [
-    {
-      _id: 'starter',
-      name: 'Starter',
-      description: 'Perfect for small businesses getting started with digital marketing',
-      price: '$999',
-      period: '/month',
-      features: [
-        'SEO Optimization',
-        'Social Media Management',
-        'Monthly Performance Reports',
-        'Email Support',
-        '2 Blog Posts per Month'
-      ],
-      isPopular: false,
-      ctaText: 'Get Started',
-      ctaUrl: '/contact'
-    },
-    {
-      _id: 'growth',
-      name: 'Growth',
-      description: 'Ideal for growing businesses ready to scale their marketing',
-      price: '$2,499',
-      period: '/month',
-      features: [
-        'Everything in Starter',
-        'PPC Campaign Management',
-        'Advanced Analytics',
-        'Weekly Strategy Calls',
-        '4 Blog Posts per Month',
-        'Social Media Advertising',
-        'Priority Support'
-      ],
-      isPopular: true,
-      ctaText: 'Get Started',
-      ctaUrl: '/contact'
-    },
-    {
-      _id: 'enterprise',
-      name: 'Enterprise',
-      description: 'Comprehensive solution for established businesses',
-      price: 'Custom',
-      period: '',
-      features: [
-        'Everything in Growth',
-        'Dedicated Account Manager',
-        'Custom Strategy Development',
-        'Unlimited Content Creation',
-        'Advanced Conversion Optimization',
-        'Multi-Channel Campaigns',
-        '24/7 Priority Support',
-        'Quarterly Business Reviews'
-      ],
-      isPopular: false,
-      ctaText: 'Contact Sales',
-      ctaUrl: '/contact'
-    }
-  ];
-
-  const displayPlans = plans && plans.length > 0 ? plans : fallbackPlans;
+  if (!plans || plans.length === 0) {
+    return (
+      <main className="pt-20 pb-32 bg-gray-50 min-h-screen">
+        <section className="page-top-red-gradient relative overflow-hidden pt-16 pb-20 mb-16">
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-gray-50"></div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 relative z-10">
+            <div className="text-center mb-20">
+              <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">Simple, Transparent Pricing</h1>
+              <p className="text-xl text-red-50/85 max-w-3xl mx-auto font-medium">
+                Pricing plans are being configured. Please check back soon.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+    );
+  }
 
   return (
     <main className="pt-20 pb-32 bg-gray-50 min-h-screen">
@@ -83,7 +39,7 @@ export default async function PricingPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {displayPlans.map((plan) => (
+          {plans.map((plan) => (
               <div key={plan._id} className={`relative p-8 rounded-3xl bg-white border ${plan.isPopular ? 'border-[var(--color-brand-primary)] shadow-2xl md:scale-[1.02] lg:scale-105 z-10' : 'border-gray-200 shadow-md'} flex flex-col`}>
                 {plan.isPopular && (
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[var(--color-brand-primary)] text-white px-4 py-1 rounded-full text-sm font-bold tracking-wider uppercase">

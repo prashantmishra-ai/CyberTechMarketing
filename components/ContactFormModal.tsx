@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { Mail, Phone, Building2, X } from 'lucide-react';
+import { validateContactForm } from '@/lib/validations/contact';
+import type { ContactFormInput } from '@/lib/validations/contact';
 
 interface ContactFormModalProps {
   isOpen: boolean;
@@ -41,6 +43,7 @@ export default function ContactFormModal({
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const config = categoryConfig[category];
 
   const [formData, setFormData] = useState({

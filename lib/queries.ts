@@ -10,6 +10,8 @@ export type ServiceDocument = {
   cardMetric?: string;
   category?: string;
   displayOrder?: number;
+  fullDescription?: unknown[];
+  features?: { title?: string; description?: string }[];
 };
 
 export type TestimonialDocument = {
@@ -112,7 +114,14 @@ export async function getAllServices() {
 
 // Fetch a single service by slug
 export async function getServiceBySlug(slug: string) {
-  const query = `*[_type == "service" && slug.current == $slug][0]`;
+  const query = `*[_type == "service" && slug.current == $slug][0] {
+    ...,
+    features[] {
+      title,
+      description
+    },
+    caseStudies[]->
+  }`;
   return await sanityClient.fetch(query, { slug });
 }
 

@@ -1,41 +1,104 @@
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function ServiceStackPage() {
   return (
-    <main className="w-full">
-      <section className="relative w-full h-[500px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image src="https://images.unsplash.com/photo-1553117319-21588aa8dbb5?q=80&w=2070&auto=format&fit=crop" alt="Service Stack" fill sizes="100vw" className="object-cover opacity-40" priority />
-          <div className="absolute inset-0 bg-gradient-to-r from-red-900 via-red-800 to-orange-700 opacity-70"></div>
+    <main className="w-full bg-white">
+      {/* Hero Section */}
+      <section className="relative w-full overflow-hidden bg-gradient-to-br from-indigo-600 via-purple-700 to-pink-600 py-24">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+          }}></div>
         </div>
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
-          <h1 className="text-5xl sm:text-6xl font-black text-white mb-6 leading-tight">Our Service Stack</h1>
-          <p className="text-xl text-red-100 max-w-2xl mx-auto">Explore the comprehensive digital marketing, design, and web capabilities behind our growth platform</p>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-6 border border-white/30">
+            <span className="text-white font-bold text-sm uppercase tracking-wider">Service Stack</span>
+          </div>
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">Our Service Stack</h1>
+          <p className="text-xl md:text-2xl text-purple-100 max-w-3xl mx-auto leading-relaxed">Comprehensive digital marketing, design, and web capabilities behind our growth platform</p>
         </div>
       </section>
 
+      {/* Overview Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="relative h-[400px]">
-            <Image src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1470&auto=format&fit=crop" alt="Services" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover rounded-2xl shadow-2xl" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Visual Element with Service Icons */}
+          <div className="relative">
+            <div className="bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 rounded-3xl p-12 border-2 border-indigo-100 shadow-xl">
+              <div className="grid grid-cols-3 gap-6">
+                <div className="bg-white rounded-2xl p-6 shadow-lg text-center transform hover:scale-105 transition-transform">
+                  <div className="text-4xl mb-2">📊</div>
+                  <div className="text-xs font-bold text-gray-700">Strategy</div>
+                </div>
+                <div className="bg-white rounded-2xl p-6 shadow-lg text-center transform hover:scale-105 transition-transform">
+                  <div className="text-4xl mb-2">🎨</div>
+                  <div className="text-xs font-bold text-gray-700">Design</div>
+                </div>
+                <div className="bg-white rounded-2xl p-6 shadow-lg text-center transform hover:scale-105 transition-transform">
+                  <div className="text-4xl mb-2">💻</div>
+                  <div className="text-xs font-bold text-gray-700">Development</div>
+                </div>
+                <div className="bg-white rounded-2xl p-6 shadow-lg text-center transform hover:scale-105 transition-transform">
+                  <div className="text-4xl mb-2">📱</div>
+                  <div className="text-xs font-bold text-gray-700">Social</div>
+                </div>
+                <div className="bg-white rounded-2xl p-6 shadow-lg text-center transform hover:scale-105 transition-transform">
+                  <div className="text-4xl mb-2">✍️</div>
+                  <div className="text-xs font-bold text-gray-700">Content</div>
+                </div>
+                <div className="bg-white rounded-2xl p-6 shadow-lg text-center transform hover:scale-105 transition-transform">
+                  <div className="text-4xl mb-2">📈</div>
+                  <div className="text-xs font-bold text-gray-700">Analytics</div>
+                </div>
+              </div>
+              <div className="mt-8 text-center">
+                <div className="inline-flex items-center gap-3 bg-white rounded-full px-6 py-3 shadow-lg">
+                  <svg className="w-5 h-5 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  <span className="text-sm font-bold text-gray-700">Full-Service Capability</span>
+                </div>
+              </div>
+            </div>
           </div>
+          
           <div>
-            <h2 className="text-4xl font-bold text-slate-900 mb-6">Complete Service Portfolio</h2>
-            <p className="text-lg text-slate-600 mb-4">Behind our growth platform is a comprehensive stack of digital marketing, design, and development services. This integrated approach means we can seamlessly connect every element of your marketing strategy.</p>
-            <p className="text-lg text-slate-600 mb-6">From strategy and creative to execution and optimization, we handle all aspects of your digital presence under one roof, ensuring consistency and effectiveness.</p>
-            <div className="space-y-3">
-              <div className="flex gap-3">
-                <span className="text-red-700 font-bold">✓</span>
-                <p className="text-slate-700"><strong>Full-Service Capability:</strong> Everything from strategy to execution</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Complete Service Portfolio</h2>
+            <p className="text-lg text-slate-600 mb-6 leading-relaxed">Behind our growth platform is a comprehensive stack of digital marketing, design, and development services. This integrated approach means we can seamlessly connect every element of your marketing strategy.</p>
+            <p className="text-lg text-slate-600 mb-8 leading-relaxed">From strategy and creative to execution and optimization, we handle all aspects of your digital presence under one roof, ensuring consistency and effectiveness.</p>
+            <div className="space-y-4">
+              <div className="flex gap-4 items-start p-4 bg-indigo-50 rounded-xl border border-indigo-100">
+                <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-bold text-slate-900 mb-1">Full-Service Capability</p>
+                  <p className="text-slate-600 text-sm">Everything from strategy to execution</p>
+                </div>
               </div>
-              <div className="flex gap-3">
-                <span className="text-red-700 font-bold">✓</span>
-                <p className="text-slate-700"><strong>Integrated Approach:</strong> All teams working as one</p>
+              <div className="flex gap-4 items-start p-4 bg-purple-50 rounded-xl border border-purple-100">
+                <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-bold text-slate-900 mb-1">Integrated Teams</p>
+                  <p className="text-slate-600 text-sm">All specialists working as one unified team</p>
+                </div>
               </div>
-              <div className="flex gap-3">
-                <span className="text-red-700 font-bold">✓</span>
-                <p className="text-slate-700"><strong>Accountability:</strong> One partner, unified results</p>
+              <div className="flex gap-4 items-start p-4 bg-pink-50 rounded-xl border border-pink-100">
+                <div className="w-8 h-8 bg-pink-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-bold text-slate-900 mb-1">Single Accountability</p>
+                  <p className="text-slate-600 text-sm">One partner, unified results and reporting</p>
+                </div>
               </div>
             </div>
           </div>

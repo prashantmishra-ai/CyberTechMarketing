@@ -101,6 +101,46 @@ export const serviceType = defineType({
       },
     }),
     defineField({
+      name: 'challenges',
+      title: 'Service Challenges',
+      type: 'array',
+      of: [{ type: 'string' }],
+    }),
+    defineField({
+      name: 'solutions',
+      title: 'Our Solutions',
+      type: 'array',
+      of: [
+        defineField({
+          type: 'object',
+          name: 'solution',
+          fields: [
+            defineField({
+              name: 'title',
+              title: 'Solution Title',
+              type: 'string',
+            }),
+            defineField({
+              name: 'description',
+              title: 'Description',
+              type: 'text',
+            }),
+          ],
+        }),
+      ],
+    }),
+    defineField({
+      name: 'caseStudies',
+      title: 'Case Studies',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'caseStudy' }],
+        },
+      ],
+    }),
+    defineField({
       name: 'displayOrder',
       title: 'Display Order',
       type: 'number',

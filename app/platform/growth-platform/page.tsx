@@ -1,41 +1,94 @@
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function GrowthPlatformPage() {
   return (
-    <main className="w-full">
-      <section className="relative w-full h-[500px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2070&auto=format&fit=crop" alt="Growth Platform" fill sizes="100vw" className="object-cover opacity-40" priority />
-          <div className="absolute inset-0 bg-gradient-to-r from-red-900 via-red-800 to-orange-700 opacity-70"></div>
+    <main className="w-full bg-white">
+      {/* Hero Section */}
+      <section className="relative w-full overflow-hidden bg-gradient-to-br from-red-600 via-red-700 to-orange-600 py-24">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+          }}></div>
         </div>
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
-          <h1 className="text-5xl sm:text-6xl font-black text-white mb-6 leading-tight">CyberTech Growth Platform</h1>
-          <p className="text-xl text-red-100 max-w-2xl mx-auto">Integrated strategy across SEO, content, paid media, and conversion optimization</p>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-6 border border-white/30">
+            <span className="text-white font-bold text-sm uppercase tracking-wider">Growth Platform</span>
+          </div>
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">CyberTech Growth Platform</h1>
+          <p className="text-xl md:text-2xl text-red-100 max-w-3xl mx-auto leading-relaxed">Integrated strategy across SEO, content, paid media, and conversion optimization</p>
         </div>
       </section>
 
+      {/* Overview Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="relative h-[400px]">
-            <Image src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1470&auto=format&fit=crop" alt="Platform Overview" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover rounded-2xl shadow-2xl" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Visual Element with Stats */}
+          <div className="relative">
+            <div className="bg-gradient-to-br from-red-50 via-orange-50 to-red-50 rounded-3xl p-12 border-2 border-red-100 shadow-xl">
+              <div className="grid grid-cols-2 gap-6">
+                <div className="bg-white rounded-2xl p-6 shadow-lg text-center transform hover:scale-105 transition-transform">
+                  <div className="text-4xl font-black text-red-600 mb-2">300%</div>
+                  <div className="text-sm font-semibold text-gray-600">Avg Traffic Growth</div>
+                </div>
+                <div className="bg-white rounded-2xl p-6 shadow-lg text-center transform hover:scale-105 transition-transform">
+                  <div className="text-4xl font-black text-orange-600 mb-2">2.5x</div>
+                  <div className="text-sm font-semibold text-gray-600">Conversion Rate</div>
+                </div>
+                <div className="bg-white rounded-2xl p-6 shadow-lg text-center transform hover:scale-105 transition-transform">
+                  <div className="text-4xl font-black text-red-600 mb-2">45%</div>
+                  <div className="text-sm font-semibold text-gray-600">ROI Improvement</div>
+                </div>
+                <div className="bg-white rounded-2xl p-6 shadow-lg text-center transform hover:scale-105 transition-transform">
+                  <div className="text-4xl font-black text-orange-600 mb-2">60%</div>
+                  <div className="text-sm font-semibold text-gray-600">Retention Rate</div>
+                </div>
+              </div>
+              <div className="mt-8 text-center">
+                <div className="inline-flex items-center gap-3 bg-white rounded-full px-6 py-3 shadow-lg">
+                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                  <span className="text-sm font-bold text-gray-700">Real-Time Performance Tracking</span>
+                </div>
+              </div>
+            </div>
           </div>
+          
           <div>
-            <h2 className="text-4xl font-bold text-slate-900 mb-6">Unified Growth Strategy</h2>
-            <p className="text-lg text-slate-600 mb-4">Our Growth Platform brings together all elements of digital marketing into one coordinated system. Rather than managing disconnected campaigns, we integrate SEO, content marketing, paid advertising, and conversion optimization into a unified strategy that multiplies results.</p>
-            <p className="text-lg text-slate-600 mb-6">By aligning all channels around your business objectives, we create a marketing engine that consistently drives growth, builds brand authority, and maximizes ROI.</p>
-            <div className="space-y-3">
-              <div className="flex gap-3">
-                <span className="text-red-700 font-bold">✓</span>
-                <p className="text-slate-700"><strong>Integrated Strategy:</strong> All channels working together</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Unified Growth Strategy</h2>
+            <p className="text-lg text-slate-600 mb-6 leading-relaxed">Our Growth Platform brings together all elements of digital marketing into one coordinated system. Rather than managing disconnected campaigns, we integrate SEO, content marketing, paid advertising, and conversion optimization into a unified strategy that multiplies results.</p>
+            <p className="text-lg text-slate-600 mb-8 leading-relaxed">By aligning all channels around your business objectives, we create a marketing engine that consistently drives growth, builds brand authority, and maximizes ROI.</p>
+            <div className="space-y-4">
+              <div className="flex gap-4 items-start p-4 bg-red-50 rounded-xl border border-red-100">
+                <div className="w-8 h-8 bg-red-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-bold text-slate-900 mb-1">Integrated Strategy</p>
+                  <p className="text-slate-600 text-sm">All channels working together seamlessly</p>
+                </div>
               </div>
-              <div className="flex gap-3">
-                <span className="text-red-700 font-bold">✓</span>
-                <p className="text-slate-700"><strong>Data-Driven:</strong> Every decision backed by analytics</p>
+              <div className="flex gap-4 items-start p-4 bg-orange-50 rounded-xl border border-orange-100">
+                <div className="w-8 h-8 bg-orange-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-bold text-slate-900 mb-1">Data-Driven Decisions</p>
+                  <p className="text-slate-600 text-sm">Every decision backed by analytics and insights</p>
+                </div>
               </div>
-              <div className="flex gap-3">
-                <span className="text-red-700 font-bold">✓</span>
-                <p className="text-slate-700"><strong>Scalable:</strong> Grows with your business</p>
+              <div className="flex gap-4 items-start p-4 bg-red-50 rounded-xl border border-red-100">
+                <div className="w-8 h-8 bg-red-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-bold text-slate-900 mb-1">Scalable Growth</p>
+                  <p className="text-slate-600 text-sm">Platform grows with your business needs</p>
+                </div>
               </div>
             </div>
           </div>

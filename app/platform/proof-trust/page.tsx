@@ -1,41 +1,96 @@
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function ProofTrustPage() {
   return (
-    <main className="w-full">
-      <section className="relative w-full h-[500px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image src="https://images.unsplash.com/photo-1507238691740-e6e1586f5160?q=80&w=2070&auto=format&fit=crop" alt="Proof & Trust" fill sizes="100vw" className="object-cover opacity-40" priority />
-          <div className="absolute inset-0 bg-gradient-to-r from-red-900 via-red-800 to-orange-700 opacity-70"></div>
+    <main className="w-full bg-white">
+      {/* Hero Section */}
+      <section className="relative w-full overflow-hidden bg-gradient-to-br from-emerald-600 via-green-700 to-teal-600 py-24">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+          }}></div>
         </div>
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
-          <h1 className="text-5xl sm:text-6xl font-black text-white mb-6 leading-tight">Proof & Trust</h1>
-          <p className="text-xl text-red-100 max-w-2xl mx-auto">See the client signals, testimonials, and credibility markers that support our approach</p>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-6 border border-white/30">
+            <span className="text-white font-bold text-sm uppercase tracking-wider">Proof & Trust</span>
+          </div>
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">Proven Track Record</h1>
+          <p className="text-xl md:text-2xl text-emerald-100 max-w-3xl mx-auto leading-relaxed">Real results, real growth, real client success stories</p>
         </div>
       </section>
 
+      {/* Overview Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="relative h-[400px]">
-            <Image src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=1470&auto=format&fit=crop" alt="Success Stories" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover rounded-2xl shadow-2xl" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Visual Element with Trust Indicators */}
+          <div className="relative">
+            <div className="bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 rounded-3xl p-12 border-2 border-emerald-100 shadow-xl">
+              <div className="grid grid-cols-2 gap-6">
+                <div className="bg-white rounded-2xl p-6 shadow-lg text-center transform hover:scale-105 transition-transform">
+                  <div className="text-4xl font-black text-emerald-600 mb-2">500+</div>
+                  <div className="text-sm font-semibold text-gray-600">Successful Campaigns</div>
+                </div>
+                <div className="bg-white rounded-2xl p-6 shadow-lg text-center transform hover:scale-105 transition-transform">
+                  <div className="text-4xl font-black text-green-600 mb-2">200+</div>
+                  <div className="text-sm font-semibold text-gray-600">Active Clients</div>
+                </div>
+                <div className="bg-white rounded-2xl p-6 shadow-lg text-center transform hover:scale-105 transition-transform">
+                  <div className="text-4xl font-black text-teal-600 mb-2">15+</div>
+                  <div className="text-sm font-semibold text-gray-600">Years Experience</div>
+                </div>
+                <div className="bg-white rounded-2xl p-6 shadow-lg text-center transform hover:scale-105 transition-transform">
+                  <div className="text-4xl font-black text-emerald-600 mb-2">50+</div>
+                  <div className="text-sm font-semibold text-gray-600">Industry Awards</div>
+                </div>
+              </div>
+              <div className="mt-8 text-center">
+                <div className="inline-flex items-center gap-3 bg-white rounded-full px-6 py-3 shadow-lg">
+                  <svg className="w-5 h-5 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                  </svg>
+                  <span className="text-sm font-bold text-gray-700">Certified & Trusted Partner</span>
+                </div>
+              </div>
+            </div>
           </div>
+          
           <div>
-            <h2 className="text-4xl font-bold text-slate-900 mb-6">Proven Track Record</h2>
-            <p className="text-lg text-slate-600 mb-4">We believe in results, not just promises. Our clients see measurable improvements in traffic, leads, and revenue. Our approach is backed by data, industry expertise, and a proven track record of success across diverse industries.</p>
-            <p className="text-lg text-slate-600 mb-6">From startups to enterprise clients, we help businesses grow by combining strategic thinking with data-driven execution.</p>
-            <div className="space-y-3">
-              <div className="flex gap-3">
-                <span className="text-red-700 font-bold">✓</span>
-                <p className="text-slate-700"><strong>Measurable Results:</strong> Real data, real growth</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Results That Speak</h2>
+            <p className="text-lg text-slate-600 mb-6 leading-relaxed">We believe in results, not just promises. Our clients see measurable improvements in traffic, leads, and revenue. Our approach is backed by data, industry expertise, and a proven track record of success across diverse industries.</p>
+            <p className="text-lg text-slate-600 mb-8 leading-relaxed">From startups to enterprise clients, we help businesses grow by combining strategic thinking with data-driven execution.</p>
+            <div className="space-y-4">
+              <div className="flex gap-4 items-start p-4 bg-emerald-50 rounded-xl border border-emerald-100">
+                <div className="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-bold text-slate-900 mb-1">Measurable Results</p>
+                  <p className="text-slate-600 text-sm">Real data, real growth, real ROI</p>
+                </div>
               </div>
-              <div className="flex gap-3">
-                <span className="text-red-700 font-bold">✓</span>
-                <p className="text-slate-700"><strong>Industry Expertise:</strong> Deep knowledge across sectors</p>
+              <div className="flex gap-4 items-start p-4 bg-green-50 rounded-xl border border-green-100">
+                <div className="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-bold text-slate-900 mb-1">Industry Expertise</p>
+                  <p className="text-slate-600 text-sm">Deep knowledge across multiple sectors</p>
+                </div>
               </div>
-              <div className="flex gap-3">
-                <span className="text-red-700 font-bold">✓</span>
-                <p className="text-slate-700"><strong>Client Success:</strong> Your goals are our goals</p>
+              <div className="flex gap-4 items-start p-4 bg-teal-50 rounded-xl border border-teal-100">
+                <div className="w-8 h-8 bg-teal-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"/>
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-bold text-slate-900 mb-1">Client Success</p>
+                  <p className="text-slate-600 text-sm">Your goals are our goals</p>
+                </div>
               </div>
             </div>
           </div>
